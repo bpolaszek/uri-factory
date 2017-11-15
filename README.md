@@ -7,9 +7,13 @@
 
 # Uri Factory
 
-This library discovers which PSR-7 library is included in your project in order to create PSR-7 `UriInterface` objects.
+A library / framework agnostic PSR-7 `UriInterface` factory.
 
-Current supported libraries:
+There are several PSR-7 libraries on packagist but each one has its own factory for creating an `UriInterface` object from a string.
+
+[bentools/uri-factory](https://github.com/bpolaszek/uri-factory) has no explicit dependency and automatically picks up your favorite library for creating `UriInterface` instances.
+
+Supported libraries so far:
 
 * `guzzlehttp/psr7`
 * `zendframework/zend-diactoros`
@@ -55,6 +59,10 @@ PHP 7.1+ is required.
 ## Tests
 
 > ./vendor/bin/phpunit
+
+## Contribute
+
+If you want [bentools/uri-factory](https://github.com/bpolaszek/uri-factory) to support more PSR-7 libraries, feel free to submit a PR.
 
 ## License
 
