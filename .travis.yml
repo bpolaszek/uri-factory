@@ -10,6 +10,12 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
 
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: 7.2 # while 7.2 is still in beta
+
 script:
   - ./vendor/bin/phpcs --standard=psr2 -n src/
   - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
