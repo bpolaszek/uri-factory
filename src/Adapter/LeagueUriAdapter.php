@@ -4,38 +4,25 @@ namespace BenTools\UriFactory\Adapter;
 
 use BenTools\UriFactory\UriFactoryInterface;
 use League\Uri\Factory;
+use League\Uri\Http;
 use Psr\Http\Message\UriInterface;
 
 final class LeagueUriAdapter implements AdapterInterface
 {
     /**
-     * @var Factory
-     */
-    private $factory;
-
-    /**
-     * LeagueUriAdapter constructor.
-     * @param Factory $factory
-     */
-    protected function __construct(Factory $factory)
-    {
-        $this->factory = $factory;
-    }
-
-    /**
      * @inheritDoc
      */
     public function createUri(string $uri): UriInterface
     {
-        return $this->factory->create($uri);
+        return Http::createFromString($uri);
     }
 
     /**
      * @inheritDoc
      */
-    public static function factory(Factory $factory = null): UriFactoryInterface
+    public static function factory(): UriFactoryInterface
     {
-        return new self($factory ?? new Factory());
+        return new self;
     }
 
     /**
@@ -43,6 +30,6 @@ final class LeagueUriAdapter implements AdapterInterface
      */
     public static function isInstalled(): bool
     {
-        return class_exists('League\Uri\Factory');
+        return class_exists('League\Uri\Http');
     }
 }
