@@ -8,25 +8,30 @@ php:
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source --dev
-
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - php: 7.2 # while 7.2 is still in beta
+  - travis_retry composer install --no-interaction --prefer-dist --dev
 
 script:
+
+  # PSR-2
   - ./vendor/bin/phpcs --standard=psr2 -n src/
+
+  # PhpUnit - whole project
+  - mkdir -p build/logs && ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+  # League/Uri isolated factory test
   - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
-  - composer req --dev --prefer-dist league/uri && phpunit tests/UriFactoryTest.php
+  - composer req --dev --prefer-dist league/uri ^5.0
+  - phpunit tests/UriFactoryTest.php
+
+  # Zend Diactoros isolated ffactory test
   - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
-  - composer req --dev --prefer-dist zendframework/zend-diactoros && phpunit tests/UriFactoryTest.php
+  - composer req --dev --prefer-dist zendframework/zend-diactoros
+  - phpunit tests/UriFactoryTest.php
+
+  # Guzzle PSR-7 isolated ffactory test
   - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
-  - composer req --dev --prefer-dist guzzlehttp/psr7 && phpunit tests/UriFactoryTest.php
-  - composer req --dev --prefer-dist league/uri guzzlehttp/psr7 zendframework/zend-diactoros
-  - mkdir -p build/logs
-  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - composer req --dev --prefer-dist guzzlehttp/psr7
+  - phpunit tests/UriFactoryTest.php
 
 after_script:
   - php vendor/bin/coveralls -v
