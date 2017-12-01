@@ -72,11 +72,29 @@ class UriFactory implements UriFactoryInterface
         }
         $currentLocation = sprintf(
             '%s://%s%s',
-            isset($_SERVER['HTTPS']) ? 'https' : 'http',
+            $this->getSchemeFromServer($_SERVER),
             $_SERVER['HTTP_HOST'],
             $_SERVER['REQUEST_URI']
         );
         return $this->createUri($currentLocation, $factory);
+    }
+
+    /**
+     * @param array $server
+     * @return string
+     */
+    private function getSchemeFromServer(array $server): string
+    {
+        if (!empty($server['REQUEST_SCHEME'])) {
+            return $server['REQUEST_SCHEME'];
+        }
+
+        switch ($server['HTTPS'] ?? null) {
+            case 'on':
+            case '1':
+                return 'https';
+        }
+        return 'http';
     }
 
     /**
