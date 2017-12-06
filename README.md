@@ -50,6 +50,25 @@ $uri = current_location(LeagueUriAdapter::factory());
 $uri = current_location(ZendDiactorosAdapter::factory());
 ```
 
+## Canonicalizer
+
+This library ships with an URL canonicalizer. 
+
+It is not a perfect one since your PSR-7 library may behave differently regarding special chars, but it should work most of the time.
+
+The `canonicalize()` function accepts any PSR-7 `UriInterface` object and will return a canonicalized one.
+
+```php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use function BenTools\UriFactory\Helper\canonicalize;
+use function BenTools\UriFactory\Helper\uri;
+
+$url = 'http://example.org../foo/../bar/?#baz';
+echo canonicalize(uri($url)); // http://example.org/bar/
+```
+
+
 ## Installation
 
 PHP 7.1+ is required.
