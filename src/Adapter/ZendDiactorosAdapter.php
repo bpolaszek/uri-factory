@@ -19,7 +19,7 @@ final class ZendDiactorosAdapter implements AdapterInterface
     /**
      * @inheritDoc
      */
-    public function createUri(string $uri): UriInterface
+    public function createUri(string $uri = ''): UriInterface
     {
         return new Uri($uri);
     }

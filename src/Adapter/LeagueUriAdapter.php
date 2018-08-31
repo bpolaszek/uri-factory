@@ -12,7 +12,7 @@ final class LeagueUriAdapter implements AdapterInterface
     /**
      * @inheritDoc
      */
-    public function createUri(string $uri): UriInterface
+    public function createUri(string $uri = ''): UriInterface
     {
         return Http::createFromString($uri);
     }

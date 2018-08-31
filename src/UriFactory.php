@@ -41,7 +41,7 @@ class UriFactory implements UriFactoryInterface
      * @param UriFactoryInterface|null $factory
      * @return UriInterface
      */
-    public function createUri(string $uri, UriFactoryInterface $factory = null): UriInterface
+    public function createUri(string $uri = '', UriFactoryInterface $factory = null): UriInterface
     {
         if (null !== $factory) {
             return $factory->createUri($uri);
