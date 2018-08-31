@@ -73,7 +73,7 @@ echo canonicalize(uri($url)); // http://example.org/bar/
 
 PHP 7.1+ is required.
 
-> composer require bentools/uri-factory 1.0.x-dev
+> composer require bentools/uri-factory
 
 ## Tests
 
