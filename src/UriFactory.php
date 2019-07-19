@@ -5,6 +5,7 @@ namespace BenTools\UriFactory;
 use BenTools\UriFactory\Adapter\AdapterInterface;
 use BenTools\UriFactory\Adapter\GuzzleAdapter;
 use BenTools\UriFactory\Adapter\LeagueUriAdapter;
+use BenTools\UriFactory\Adapter\NyholmAdapter;
 use BenTools\UriFactory\Adapter\ZendDiactorosAdapter;
 use Psr\Http\Message\UriInterface;
 
@@ -30,6 +31,7 @@ class UriFactory implements UriFactoryInterface
     private function getDefaultAdapters()
     {
         return [
+            NyholmAdapter::class,
             GuzzleAdapter::class,
             ZendDiactorosAdapter::class,
             LeagueUriAdapter::class,
