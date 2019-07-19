@@ -20,8 +20,9 @@
     "require-dev": {
         "guzzlehttp/psr7": "^1.4",
         "league/uri": "^5.0",
-        "phpunit/phpunit": "@stable",
-        "satooshi/php-coveralls": "@stable",
+        "nyholm/psr7": "^1.1",
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": "~6.0|~7.0",
         "squizlabs/php_codesniffer": "@stable",
         "symfony/var-dumper": "^3.3",
         "zendframework/zend-diactoros": "^1.6"
@@ -45,7 +46,8 @@
     "suggest": {
         "league/uri": "URI manipulation Library",
         "zendframework/zend-diactoros": "PSR-7 HTTP Message implementation",
-        "guzzlehttp/psr7": "PSR-7 HTTP message library"
+        "guzzlehttp/psr7": "PSR-7 HTTP message library",
+        "nyholm/psr7": "PSR-7 HTTP message library"
     },
     "config": {
         "sort-packages": true

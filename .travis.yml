@@ -3,11 +3,20 @@ dist: xenial
 language: php
 
 php:
-  - 7.1
-  - 7.2
+  - '7.1'
+  - '7.2'
+  - '7.3'
+  - 'nightly'
+
+
+matrix:
+  allow_failures:
+    - php: 'nightly'
+
 
 before_script:
   - travis_retry composer self-update
+  - travis_retry composer global require hirak/prestissimo
   - travis_retry composer install --no-interaction --prefer-dist --dev
 
 script:
@@ -19,19 +28,24 @@ script:
   - mkdir -p build/logs && ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
   # League/Uri isolated factory test
-  - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
-  - composer req --dev --prefer-dist league/uri ^5.0
-  - phpunit tests/UriFactoryTest.php
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros
+  - composer req --dev --prefer-dist league/uri:^5.0
+  - ./vendor/bin/phpunit tests/UriFactoryTest.php
 
   # Zend Diactoros isolated ffactory test
-  - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros
   - composer req --dev --prefer-dist zendframework/zend-diactoros
-  - phpunit tests/UriFactoryTest.php
+  - ./vendor/bin/phpunit tests/UriFactoryTest.php
 
   # Guzzle PSR-7 isolated ffactory test
-  - composer rem --dev league/uri guzzlehttp/psr7 zendframework/zend-diactoros
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros
   - composer req --dev --prefer-dist guzzlehttp/psr7
-  - phpunit tests/UriFactoryTest.php
+  - ./vendor/bin/phpunit tests/UriFactoryTest.php
+
+  # Nyholm PSR-7 isolated ffactory test
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros
+  - composer req --dev --prefer-dist nyholm/psr7
+  - ./vendor/bin/phpunit tests/UriFactoryTest.php
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - php vendor/bin/php-coveralls -v
