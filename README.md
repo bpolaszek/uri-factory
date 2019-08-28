@@ -18,6 +18,7 @@ Supported libraries so far:
 * `guzzlehttp/psr7`
 * `zendframework/zend-diactoros`
 * `league/uri`
+* `nyholm/psr7`
 
 ## Usage
 
