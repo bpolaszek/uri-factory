@@ -19,6 +19,7 @@ Supported libraries so far:
 * `zendframework/zend-diactoros`
 * `league/uri`
 * `nyholm/psr7`
+* `ringcentral/psr7`
 
 ## Usage
 
@@ -53,7 +54,7 @@ $uri = current_location(ZendDiactorosAdapter::factory());
 
 ## Canonicalizer
 
-This library ships with an URL canonicalizer. 
+This library ships with an URL canonicalizer.
 
 It is not a perfect one since your PSR-7 library may behave differently regarding special chars, but it should work most of the time.
 
