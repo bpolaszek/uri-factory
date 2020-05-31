@@ -6,6 +6,7 @@ use BenTools\UriFactory\Adapter\AdapterInterface;
 use BenTools\UriFactory\Adapter\GuzzleAdapter;
 use BenTools\UriFactory\Adapter\LeagueUriAdapter;
 use BenTools\UriFactory\Adapter\NyholmAdapter;
+use BenTools\UriFactory\Adapter\RingCentralAdapter;
 use BenTools\UriFactory\Adapter\ZendDiactorosAdapter;
 use Psr\Http\Message\UriInterface;
 
@@ -35,6 +36,7 @@ class UriFactory implements UriFactoryInterface
             GuzzleAdapter::class,
             ZendDiactorosAdapter::class,
             LeagueUriAdapter::class,
+            RingCentralAdapter::class,
         ];
     }
 
