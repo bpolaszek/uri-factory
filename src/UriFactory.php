@@ -7,7 +7,6 @@ use BenTools\UriFactory\Adapter\GuzzleAdapter;
 use BenTools\UriFactory\Adapter\LeagueUriAdapter;
 use BenTools\UriFactory\Adapter\NyholmAdapter;
 use BenTools\UriFactory\Adapter\RingCentralAdapter;
-use BenTools\UriFactory\Adapter\ZendDiactorosAdapter;
 use Psr\Http\Message\UriInterface;
 
 class UriFactory implements UriFactoryInterface
@@ -34,7 +33,6 @@ class UriFactory implements UriFactoryInterface
         return [
             NyholmAdapter::class,
             GuzzleAdapter::class,
-            ZendDiactorosAdapter::class,
             LeagueUriAdapter::class,
             RingCentralAdapter::class,
         ];
@@ -58,7 +56,7 @@ class UriFactory implements UriFactoryInterface
             }
         }
         throw new \RuntimeException(
-            "No adapter is installed. Please install guzzlehttp/psr7, zendframework/zend-diactoros or league/uri."
+            "No adapter is installed. Please install guzzlehttp/psr7 or league/uri."
         );
     }
 

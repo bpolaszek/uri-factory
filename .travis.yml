@@ -29,27 +29,22 @@ script:
   - mkdir -p build/logs && ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
   # League/Uri isolated factory test
-  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros ringcentral/psr7
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 ringcentral/psr7
   - composer req --dev --prefer-dist league/uri:^5.0
   - ./vendor/bin/phpunit tests/UriFactoryTest.php
 
-  # Zend Diactoros isolated ffactory test
-  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros ringcentral/psr7
-  - composer req --dev --prefer-dist zendframework/zend-diactoros
-  - ./vendor/bin/phpunit tests/UriFactoryTest.php
-
   # Guzzle PSR-7 isolated ffactory test
-  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros ringcentral/psr7
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 ringcentral/psr7
   - composer req --dev --prefer-dist guzzlehttp/psr7
   - ./vendor/bin/phpunit tests/UriFactoryTest.php
 
   # Nyholm PSR-7 isolated ffactory test
-  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros ringcentral/psr7
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 ringcentral/psr7
   - composer req --dev --prefer-dist nyholm/psr7
   - ./vendor/bin/phpunit tests/UriFactoryTest.php
 
   # Nyholm PSR-7 isolated ffactory test
-  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 zendframework/zend-diactoros ringcentral/psr7
+  - composer rem --dev league/uri nyholm/psr7 guzzlehttp/psr7 ringcentral/psr7
   - composer req --dev --prefer-dist ringcentral/psr7
   - ./vendor/bin/phpunit tests/UriFactoryTest.php
 

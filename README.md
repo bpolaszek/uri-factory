@@ -16,7 +16,6 @@ There are several PSR-7 libraries on packagist but each one has its own factory 
 Supported libraries so far:
 
 * `guzzlehttp/psr7`
-* `zendframework/zend-diactoros`
 * `league/uri`
 * `nyholm/psr7`
 * `ringcentral/psr7`
@@ -39,17 +38,14 @@ You can specify which library to use, by using the corresponding adapter:
 ```php
 use BenTools\UriFactory\Adapter\GuzzleAdapter;
 use BenTools\UriFactory\Adapter\LeagueUriAdapter;
-use BenTools\UriFactory\Adapter\ZendDiactorosAdapter;
 use function BenTools\UriFactory\Helper\current_location;
 use function BenTools\UriFactory\Helper\uri;
 
 $uri = uri('http://www.example.net', GuzzleAdapter::factory());
 $uri = uri('http://www.example.net', LeagueUriAdapter::factory());
-$uri = uri('http://www.example.net', ZendDiactorosAdapter::factory());
 
 $uri = current_location(GuzzleAdapter::factory());
 $uri = current_location(LeagueUriAdapter::factory());
-$uri = current_location(ZendDiactorosAdapter::factory());
 ```
 
 ## Canonicalizer
