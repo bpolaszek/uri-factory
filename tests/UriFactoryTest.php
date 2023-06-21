@@ -4,7 +4,6 @@ namespace BenTools\UriFactory\Tests;
 
 use BenTools\UriFactory\Adapter\GuzzleAdapter;
 use BenTools\UriFactory\Adapter\LeagueUriAdapter;
-use BenTools\UriFactory\Adapter\ZendDiactorosAdapter;
 use BenTools\UriFactory\UriFactory;
 use GuzzleHttp\Psr7\Uri as GuzzleUri;
 use League\Uri\Http as LeagueUri;
@@ -12,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 use function BenTools\UriFactory\Helper\current_location;
 use function BenTools\UriFactory\Helper\uri;
-use Zend\Diactoros\Uri as ZendUri;
 
 class UriFactoryTest extends TestCase
 {
