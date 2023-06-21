@@ -56,7 +56,7 @@ class UriFactory implements UriFactoryInterface
             }
         }
         throw new \RuntimeException(
-            "No adapter is installed. Please install guzzlehttp/psr7 or league/uri."
+            "No adapter is installed. Please install nyholm/psr7, ringcentral/psr7, guzzlehttp/psr7 or league/uri."
         );
     }
 
