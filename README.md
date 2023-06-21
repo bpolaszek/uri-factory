@@ -69,7 +69,7 @@ echo canonicalize(uri($url)); // http://example.org/bar/
 
 ## Installation
 
-PHP 7.1+ is required.
+PHP 8.0+ is required.
 
 > composer require bentools/uri-factory
 

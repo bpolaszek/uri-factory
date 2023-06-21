@@ -2,13 +2,11 @@
 
 namespace BenTools\UriFactory\Tests;
 
-use BenTools\UriFactory\Adapter\GuzzleAdapter;
-use BenTools\UriFactory\Adapter\LeagueUriAdapter;
 use BenTools\UriFactory\UriFactory;
-use GuzzleHttp\Psr7\Uri as GuzzleUri;
-use League\Uri\Http as LeagueUri;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
+use RuntimeException;
+
 use function BenTools\UriFactory\Helper\current_location;
 use function BenTools\UriFactory\Helper\uri;
 
@@ -37,11 +35,10 @@ class UriFactoryTest extends TestCase
         unset($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST']);
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testRequestUriFailsOnCli()
     {
+        $this->expectException(RuntimeException::class);
+
         current_location();
     }
 }
