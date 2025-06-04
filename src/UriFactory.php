@@ -6,6 +6,7 @@ use BenTools\UriFactory\Adapter\AdapterInterface;
 use BenTools\UriFactory\Adapter\GuzzleAdapter;
 use BenTools\UriFactory\Adapter\LeagueUriAdapter;
 use BenTools\UriFactory\Adapter\NyholmAdapter;
+use BenTools\UriFactory\Adapter\ReactAdapter;
 use BenTools\UriFactory\Adapter\RingCentralAdapter;
 use Psr\Http\Message\UriInterface;
 
@@ -28,13 +29,14 @@ class UriFactory implements UriFactoryInterface
     /**
      * @return array
      */
-    private function getDefaultAdapters()
+    private function getDefaultAdapters(): array
     {
         return [
             NyholmAdapter::class,
             GuzzleAdapter::class,
             LeagueUriAdapter::class,
             RingCentralAdapter::class,
+            ReactAdapter::class,
         ];
     }
 
